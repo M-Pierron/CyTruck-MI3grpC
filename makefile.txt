@@ -1,0 +1,16 @@
+# -- Toutes les cibles seront executées en même temps
+all: exec
+
+AVL.o : AVL.c header.h
+	gcc -c AVL.c -o AVL.o
+
+main.o : main.c header.h
+	gcc -c main.c -o main.o
+
+exec : AVL.o main.o
+	gcc main.o AVL.o -o exec
+
+# -- Supprime tous les fichiers objects
+clean:
+	rm -f *.o
+	rm exec
