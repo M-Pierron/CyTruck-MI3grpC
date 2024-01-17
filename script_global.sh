@@ -19,10 +19,10 @@ fi
 
 fichier= "$1"
 if [ ! -f "$fichier" ]; then
-    echo "Le fichier place en parametre n'existe pas."
-    aide
-    exit 1
+	    echo "Le fichier $fichier n'existe pas."
+	    exit 1
 fi
+
 
 ## -- Le fichier de donnees d entree devra etre copie dans un dossier data
 cp data.csv CyTruck-MI3grpC/data
