@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## -- Creation des dossiers et deplacement des programmes C et tout ce qui s'y rapporte dans le dossier 'progc' 
-cd ..
+cd ~
 mkdir -p CyTruck-MI3grpC
 cd CyTruck-MI3grpC
 mkdir -p temp
@@ -9,7 +9,7 @@ mkdir -p images
 mkdir -p data
 mkdir -p progc
 mkdir -p demo
-cd ..
+cd ~
 mv makefile *.c CyTruck-MI3grpC/progc
 
 ## -- Verification du nombre d'argument(s)
