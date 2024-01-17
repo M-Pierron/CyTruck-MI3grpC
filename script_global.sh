@@ -17,8 +17,8 @@ if [ "$#" -lt 2 ]; then
     aide
 fi
 
-fichier_arg = "$1"
-if [ ! -f "$fichier_arg" ]; then
+fichier= "$1"
+if [ ! -f "$fichier" ]; then
     echo "Le fichier place en parametre n'existe pas."
     aide
     exit 1
@@ -51,16 +51,33 @@ function aide() {
 
 for argument in "$@"; do
 if [ "$argument" == "-d1" ]; then
-    ## script d1
-    ## script d1
+
+	# Obtient le nom des conducteurs avec le plus grand nombre de trajets
+	conducteurs_trajets=$(tail -n +2 "$fichier" | awk -F';' '{count[$6]++} END {for (driver in count) print count[driver], driver}' | sort -nr)
+
+	# Affiche les trois conducteurs avec le plus grand nombre de trajets
+	echo "Top 10 conducteurs avec le plus grand nombre de trajets :"
+	echo "$conducteurs_trajets" | head -n 10   \
+	>> résultatd1.txt
 fi
 if [ "$argument" == "-d2" ]; then
-    ## script d2
-    ## script d2
+#TRAITEMENT [D2] : conducteurs et la plus grande distance:
+
+	# Trier les trajets par distance décroissante et afficher les 10 premiers avec le nom du conducteur
+	echo "Top 10 des conducteur ayant parcouru la plus grande distance totales"
+	awk -F ';' '{arr[$2]+=$5; drivers[$2]=$6} END {for (i in arr) printf "%s %.3f\n", drivers[i], arr[i]}' "$fichier" \
+	    | sort -t ';' -k2 -nr | head -n 10 \
+	    >> résultatd2.txt
 fi
 if [ "$argument" == "-l" ]; then
-    ## script l
-    ## script l
+	#Trier les trajets par distances décroissante et afficher les 10 trajets les plus longs dans l'ordre croissant en fonction de leur ID route (identifaint de trajet) 
+
+	echo "Les 10 trajets les plus longs dans l'odre croissant de leur Identifiant de trajet"
+
+	awk -F ';' '{arr[$1]+=$5} END {for (i in arr) printf "%s %.3f\n", i, arr[i]}' "$fichier"\
+		| sort -t ';' -k2 -nr | head -n 10 \
+		| sort -t ';' -k1 -n | head -n 10  \
+		>> résultatl.txt
 fi
 if [ "$argument" == "-t" ]; then
     ## script t
