@@ -23,3 +23,4 @@ set title " "
 set terminal png 
 set output 'graphiqued2.png'
 plot "traitd2" using 2:xtic(1) axes x1y2 lc rgb "skyblue" notitle
+convert -rotate 90 graphiqued2.png graphd2.png
