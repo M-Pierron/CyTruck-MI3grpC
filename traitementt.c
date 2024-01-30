@@ -1,4 +1,4 @@
-#include "header.h"
+#include "headert.h"
 #define TAILLE_LIGNE 128
 #define NB_COLONNES 4
 int main() {
