@@ -1,5 +1,5 @@
 # -- Toutes les cibles seront executées en même temps
-all: exec
+allt: exect
 
 etape.o : etape.c header.h
 	gcc -c etape.c -o etape.o
@@ -13,8 +13,8 @@ ville.o : ville.c header.h
 traitementt.o : traitementt.c header.h
 	gcc -c traitementt.c -o traitementt.o
 
-exec : etape.o calcul.o ville.o traitementt.o
-	gcc traitementt.o etape.o calcul.o ville.o -o exec
+exect : etape.o calcul.o ville.o traitementt.o
+	gcc traitementt.o etape.o calcul.o ville.o -o exect
 
 # -- Supprime tous les fichiers objects
 clean:
