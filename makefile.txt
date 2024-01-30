@@ -10,11 +10,11 @@ calcul.o : calcul.c header.h
 ville.o : ville.c header.h
 	gcc -c ville.c -o ville.o
 
-main.o : main.c header.h
-	gcc -c main.c -o main.o
+traitementt.o : traitementt.c header.h
+	gcc -c traitementt.c -o traitementt.o
 
-exec : etape.o calcul.o ville.o main.o
-	gcc main.o etape.o calcul.o ville.o -o exec
+exec : etape.o calcul.o ville.o traitementt.o
+	gcc traitementt.o etape.o calcul.o ville.o -o exec
 
 # -- Supprime tous les fichiers objects
 clean:
