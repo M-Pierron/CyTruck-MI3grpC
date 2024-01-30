@@ -1,14 +1,20 @@
 # -- Toutes les cibles seront executées en même temps
 all: exec
 
-AVL.o : AVL.c header.h
-	gcc -c AVL.c -o AVL.o
+etape.o : etape.c header.h
+	gcc -c etape.c -o etape.o
+
+calcul.o : calcul.c header.h
+	gcc -c calcul.c -o calcul.o
+
+ville.o : ville.c header.h
+	gcc -c ville.c -o ville.o
 
 main.o : main.c header.h
 	gcc -c main.c -o main.o
 
-exec : AVL.o main.o
-	gcc main.o AVL.o -o exec
+exec : etape.o calcul.o ville.o main.o
+	gcc main.o etape.o calcul.o ville.o -o exec
 
 # -- Supprime tous les fichiers objects
 clean:
