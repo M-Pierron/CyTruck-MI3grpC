@@ -15,6 +15,6 @@ set offsets 0,0,0.5,0.5
 
 
 set terminal png 
-set output 'graphique.png'
+set output 'graphiqued1.png'
 plot "traitd1" using 1:ytic(2) with boxes lc rgb "skyblue"
-convert -rotate 90 graphique.png graph.png
+convert -rotate 90 graphiqued1.png graph.png
