@@ -1,16 +1,16 @@
 # -- Toutes les cibles seront executées en même temps
 allt: exect
 
-etape.o : etape.c header.h
+etape.o : etape.c headert.h
 	gcc -c etape.c -o etape.o
 
-calcult.o : calcult.c header.h
+calcult.o : calcult.c headert.h
 	gcc -c calcult.c -o calcult.o
 
-ville.o : ville.c header.h
+ville.o : ville.c headert.h
 	gcc -c ville.c -o ville.o
 
-traitementt.o : traitementt.c header.h
+traitementt.o : traitementt.c headert.h
 	gcc -c traitementt.c -o traitementt.o
 
 exect : etape.o calcult.o ville.o traitementt.o
