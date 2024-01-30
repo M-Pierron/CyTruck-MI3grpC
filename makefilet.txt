@@ -4,8 +4,8 @@ allt: exect
 etape.o : etape.c header.h
 	gcc -c etape.c -o etape.o
 
-calcul.o : calcul.c header.h
-	gcc -c calcul.c -o calcul.o
+calcult.o : calcult.c header.h
+	gcc -c calcult.c -o calcult.o
 
 ville.o : ville.c header.h
 	gcc -c ville.c -o ville.o
@@ -13,8 +13,8 @@ ville.o : ville.c header.h
 traitementt.o : traitementt.c header.h
 	gcc -c traitementt.c -o traitementt.o
 
-exect : etape.o calcul.o ville.o traitementt.o
-	gcc traitementt.o etape.o calcul.o ville.o -o exect
+exect : etape.o calcult.o ville.o traitementt.o
+	gcc traitementt.o etape.o calcult.o ville.o -o exect
 
 # -- Supprime tous les fichiers objects
 clean:
