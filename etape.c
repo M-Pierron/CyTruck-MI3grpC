@@ -135,6 +135,10 @@ Etape *insertionAVLrecup(Etape *AVLetape, Etape *etape, int *h) {
 
     - Retour : Pointeur sur le nouvel AVL
   --------------------------------------------------------------------------------------*/
+  if (strcmp(etape->id, "Route ID") == 0) {
+    return AVLetape;
+  }
+  
   if (AVLetape == NULL) {
     *h = 1;
     return etape;
