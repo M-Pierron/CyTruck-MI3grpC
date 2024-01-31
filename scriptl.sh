@@ -1,3 +1,4 @@
+#!/bin/bash
 set datafile separator ";"
 set style data histogram 
 set style fill solid
