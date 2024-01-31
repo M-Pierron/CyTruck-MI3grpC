@@ -1,3 +1,4 @@
+#!/bin/bash
 set datafile separator ";"
 set size ratio 1
 set style data histogram 
