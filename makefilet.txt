@@ -19,4 +19,4 @@ exect : etape.o calcult.o ville.o traitementt.o
 # -- Supprime tous les fichiers objects
 clean:
 	rm -f *.o
-	rm exec
+	rm exect
