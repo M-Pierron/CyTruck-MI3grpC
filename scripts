@@ -1,3 +1,4 @@
+#!/bin/bash
 set datafile separator ";"
 set xtics nomirror offset -3,-2.5
 set xtic rotate by 45
