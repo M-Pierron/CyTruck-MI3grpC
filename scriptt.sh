@@ -1,3 +1,4 @@
+#!/bin/bash
 set style histogram clustered
 set style data histograms
 set style fill solid
