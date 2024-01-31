@@ -24,4 +24,4 @@ set title " "
 set terminal png 
 set output 'graphique-d1.png'
 plot "resultatd1.txt" using 2:xtic(1) axes x1y2 lc rgb "skyblue" notitle
-convert -rotate 90 graphique-d1.png graphd1.png
+
