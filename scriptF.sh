@@ -85,6 +85,8 @@ traitement_s() {
     verification_executable_c
     verification_dossiers
     
+    cd CyTruck-MI3grpC || exit
+    
     # Exécuter le programme C et sauvegarder les résultats dans un fichier texte
     ./progc/execs > temp/resultats.txt
     
