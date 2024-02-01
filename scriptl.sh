@@ -14,4 +14,4 @@ set title "Option -l"
 
 set terminal png 
 set output 'graphique-l.png'
-plot "traitl" using 2:xtic(1) with boxes lc rgb "skyblue"
+plot "resultatl" using 2:xtic(1) with boxes lc rgb "skyblue"
