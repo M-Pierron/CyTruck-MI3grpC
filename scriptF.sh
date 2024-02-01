@@ -17,6 +17,7 @@ traitement_d1() {
     # Affiche les conducteurs avec le plus grand nombre de trajets différents
     echo "Top conducteurs avec le plus grand nombre de trajets différents :"
     echo "$conducteurs_trajets"| awk '{print $1 ";" $2, $3}' | head -n 10 > CyTruck-MI3grpC/temp/resultatd1.txt
+    # Exécute le script Gnuplot
     gnuplot CyTruck-MI3grpC/gnuplot/scriptd1.sh
     cd CyTruck-MI3grpC/temp/
     convert -rotate 90 graphique-d1.png graphd1.png
@@ -29,7 +30,7 @@ traitement_d2() {
     fichier="$1"
     # Trier les trajets par distance décroissante et afficher les 10 premiers avec le nom du conducteur
     echo "Top 10 des conducteur ayant parcouru la plus grande distance totales"
-    awk -F';' '{arr[$6]+=$5} END {for (driver in arr) printf "%s;%.2f\n", driver, arr[driver]}' $fichier | sort -t ';' -k2 -nr | head -n 10 > resultatd2.txt
+    awk -F';' '{arr[$6]+=$5} END {for (driver in arr) printf "%s;%.2f\n", driver, arr[driver]}' $fichier | sort -t ';' -k2 -nr | head -n 10 > CyTruck-MI3grpC/temp/resultatd2.txt
     # Exécute le script Gnuplot
     gnuplot CyTruck-MI3grpC/gnuplot/scriptd2.sh
     cd CyTruck-MI3grpC/temp/
@@ -44,7 +45,7 @@ traitement_l() {
     #Trier les trajets par distances décroissante et afficher les 10 trajets les plus longs dans l'ordre croissant en fonction de leur ID route (identifaint de trajet)
     echo "Les 10 trajets les plus longs dans l'ordre croissant de leur Identifiant de trajet"
     awk -F ';' 'NR > 1 {arr[$1]+=$5} END {for (i in arr) printf "%s;%.3f\n", i, arr[i]}' "$fichier" \
-    | sort -t ';' -k2 -nr | head -n 10 | sort -t ';' -k1 -n > resultatl.txt
+    | sort -t ';' -k2 -nr | head -n 10 | sort -t ';' -k1 -n > CyTruck-MI3grpC/temp/resultatl.txt
     # Exécute le script Gnuplot
     gnuplot scriptl.sh   
 }
