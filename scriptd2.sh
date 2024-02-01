@@ -15,13 +15,13 @@ unset x2tics
 set xtics nomirror offset 0,-11
 set y2tics rotate by 45
 
-set xlabel "Chauffeurs" offset 0,-11
+set xlabel "Conducteurs" offset 0,-11
 set xlabel rotate by 180
-set y2label "Longueurs du trajet" offset 1,0
+set y2label "Distance(km)" offset 1,0
 set ylabel "Option -d2"
 set title " "
 
 set terminal png 
 set output 'graphiqued2.png'
-plot "traitd2" using 2:xtic(1) axes x1y2 lc rgb "skyblue" notitle
+plot "resultatd2" using 2:xtic(1) axes x1y2 lc rgb "skyblue" notitle
 
