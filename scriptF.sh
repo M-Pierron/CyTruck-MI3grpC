@@ -47,7 +47,7 @@ traitement_l() {
     awk -F ';' 'NR > 1 {arr[$1]+=$5} END {for (i in arr) printf "%s;%.3f\n", i, arr[i]}' "$fichier" \
     | sort -t ';' -k2 -nr | head -n 10 | sort -t ';' -k1 -n > CyTruck-MI3grpC/temp/resultatl.txt
     # Exécute le script Gnuplot
-    gnuplot scriptl.sh   
+    gnuplot CyTruck-MI3grpC/gnuplot/scriptl.sh   
 }
 
 traitement_s() {
@@ -64,6 +64,10 @@ traitement_s() {
     # Exécuter le programme C et sauvegarder les résultats dans un fichier texte
     ./progc/execs > temp/resultats.txt
     
+    cd..
+    
+    # Exécute le script Gnuplot
+    gnuplot CyTruck-MI3grpC/gnuplot/scripts.sh
     cd ..
 }
 
