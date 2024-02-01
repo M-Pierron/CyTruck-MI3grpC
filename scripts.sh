@@ -11,4 +11,4 @@ set title "Option -s"
 
 set terminal png 
 set output 'graphique-s.png'
-plot "data_s.dat" using ($1-1):5:($5-$6):xtic(2) with filledcurve lc rgb "#32D365", '' using 4 smooth mcspline lw 2
+plot "resultats.txt" using ($1-1):5:($5-$6):xtic(2) with filledcurve lc rgb "#32D365", '' using 4 smooth mcspline lw 2
