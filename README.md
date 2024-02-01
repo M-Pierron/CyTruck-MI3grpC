@@ -9,8 +9,8 @@ Programme qui analyse le contenu du fichier de données et génére des graphiqu
 
 __Comment l'utiliser__ : 
 
-1. Telecharger l'integralité du github, et le placer à la racine ~.
-2. Mettre le fichier data.csv egalement à la racine.
+1. Telecharger l'integralité du github
+2. Placer le fichier data.csv dans le dossier telechargé par Github.
 3. Executer le script shell script_global.sh, en prenant en paramètres le chemin du fichier CSV d’entrée contenant les données des trajets routiers effectués. Il prendra également d’autres paramètres qui seront les choix des traitements à faire (si jamais il y a une mauvaise commande, un manuel d'aide va être affiché)
 4. Recuperer les résultats voulus dans les dossiers concernés en fonction du cahier des charges.
 
@@ -24,7 +24,7 @@ __Liste des fichiers__ :
 - headert.h : Fonction header, qui rassemble et declare les fonctions du traitement t.
 - makefile : Permet de compiler les programmes .c.
 - route.c : Fonctions qui permettent de gerer les AVL du type Route (traitement s).
-- script_global.sh : Programme principale, regroupant l'ensemble du programme.
+- scriptF.sh : Programme principale, regroupant l'ensemble du programme.
 - scriptd1.sh : Programme gnuplot permettant de faire le graphique du traitement d1.
 - scriptd2.sh : Programme gnuplot permettant de faire le graphique du traitement d2.
 - scriptl.sh : Programme gnuplot permettant de faire le graphique du traitement l.
