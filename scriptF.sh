@@ -1,10 +1,10 @@
 #!/bin/bash
 
-## -- Creation des dossiers et deplacement des programmes C et tout ce qui s'y rapporte dans le dossier 'progc' 
+# Création des dossiers
+mkdir -p CyTruck-MI3grpC/{data,progc,images,temp,demo}
 
-mkdir -p data progc images temp demo
-
-cp data.csv data/
+# Déplacement du fichier data.csv dans le dossier data
+cp data.csv CyTruck-MI3grpC/data/
 
 # Définir la locale pour le format numérique
 export LC_NUMERIC="en_US.UTF-8"
@@ -44,8 +44,9 @@ traitement_l() {
 }
 
 traitement_s() {
-    # Copier le programme C, le makefile et tout ce qui s'y rapporte dans le dossier 'progc'
-    cp program.c makefile progc/
+    # Déplacement des programmes C et des fichiers associés dans le dossier progc
+    mv main_s.c route.c headers.h makefile CyTruck-MI3grpC/progc/
+    
     cd progc
     
     # Compiler le programme C en exécutable en utilisant le makefile
