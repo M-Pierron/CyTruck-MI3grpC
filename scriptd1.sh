@@ -23,5 +23,5 @@ set title " "
 
 set terminal png 
 set output 'graphique-d1.png'
-plot "resultatd1.txt" using 2:xtic(1) axes x1y2 lc rgb "skyblue" notitle
-
+plot "CyTruck-MI3grpC/temp/resultatd1.txt" using 2:xtic(1) axes x1y2 lc rgb "skyblue" notitle
+mv graphique-d1.png CyTruck-MI3grpC/temp/
