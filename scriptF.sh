@@ -68,7 +68,6 @@ traitement_s() {
     
     # Exécute le script Gnuplot
     gnuplot CyTruck-MI3grpC/gnuplot/scripts.sh
-    cd ..
 }
 
 # Vérification des arguments
