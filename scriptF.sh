@@ -9,6 +9,34 @@ cp data.csv CyTruck-MI3grpC/data/
 # Définir la locale pour le format numérique
 export LC_NUMERIC="en_US.UTF-8"
 
+# Fonction pour vérifier la présence de l'exécutable C
+verification_executable_c() {
+    if [ ! -f "CyTruck-MI3grpC/progc/execs" ]; then
+        # Compiler le programme C en exécutable en utilisant le makefile
+        cd CyTruck-MI3grpC/progc || exit
+        make alls
+        
+        # Vérifier que la compilation s'est bien déroulée
+        if [ $? -ne 0 ]; then
+            echo "Erreur lors de la compilation du programme C."
+            exit 1
+        fi
+        
+        cd ..
+    fi
+}
+
+# Vérification de la présence des dossiers temp et images
+verification_dossiers() {
+    if [ ! -d "CyTruck-MI3grpC/temp" ]; then
+        mkdir CyTruck-MI3grpC/temp
+    else
+        rm -rf CyTruck-MI3grpC/temp/*
+    fi
+
+    mkdir -p CyTruck-MI3grpC/images
+}
+
 # Définition des fonctions pour chaque traitement
 traitement_d1() {
     fichier="$1"
@@ -54,12 +82,8 @@ traitement_s() {
     # Déplacement des programmes C et des fichiers associés dans le dossier progc
     mv headers.h traitements.c route.c calculs.c makefiles.txt CyTruck-MI3grpC/progc/
     
-    cd progc
-    
-    # Compiler le programme C en exécutable en utilisant le makefile
-    make alls
-    
-    cd..
+    verification_executable_c
+    verification_dossiers
     
     # Exécuter le programme C et sauvegarder les résultats dans un fichier texte
     ./progc/execs > temp/resultats.txt
