@@ -17,9 +17,12 @@ traitement_d1() {
     # Affiche les conducteurs avec le plus grand nombre de trajets différents
     echo "Top conducteurs avec le plus grand nombre de trajets différents :"
     echo "$conducteurs_trajets"| awk '{print $1 ";" $2, $3}' | head -n 10 > CyTruck-MI3grpC/temp/resultatd1.txt
-    gnuplot CyTruck-MI3grpC/gnuplot/scriptd1.sh 
+    gnuplot CyTruck-MI3grpC/gnuplot/scriptd1.sh
+    cd CyTruck-MI3grpC/temp/
     convert -rotate 90 graphique-d1.png graphd1.png
+    mv graphd1.png ../images/
     rm graphique-d1.png
+    cd ..
 }
 
 traitement_d2() {
