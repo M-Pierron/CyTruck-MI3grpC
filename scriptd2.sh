@@ -18,7 +18,7 @@ set y2tics rotate by 45
 set xlabel "Chauffeurs" offset 0,-11
 set xlabel rotate by 180
 set y2label "Longueurs du trajet" offset 1,0
-set ylabel "Option -d1"
+set ylabel "Option -d2"
 set title " "
 
 set terminal png 
