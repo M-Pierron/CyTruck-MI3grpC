@@ -1,4 +1,5 @@
 #!/bin/bash
+
 set datafile separator ";"
 set size ratio 1
 set style data histogram 
@@ -23,5 +24,4 @@ set title " "
 
 set terminal png 
 set output 'graphique-d1.png'
-plot "CyTruck-MI3grpC/temp/resultatd1.txt" using 2:xtic(1) axes x1y2 lc rgb "skyblue" notitle
-mv graphique-d1.png CyTruck-MI3grpC/temp/
+plot "resultatd1.txt" using 1:xtic(2) axes x1y2 lc rgb "skyblue" notitle
