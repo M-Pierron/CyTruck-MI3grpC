@@ -15,7 +15,7 @@ unset x2tics
 set xtics nomirror offset 0,-11
 set y2tics rotate by 45
 
-set xlabel "Chauffeurs" offset 0,-11
+set xlabel "Conducteurs" offset 0,-11
 set xlabel rotate by 180
 set y2label "Nb de routes" offset 1,0
 set ylabel "Option -d1"
