@@ -9,9 +9,10 @@ Programme qui analyse le contenu du fichier de données et génére des graphiqu
 
 __Comment l'utiliser__ : 
 
-1. Telecharger l'integralité du github, et le placer à la racine ~
-2. Executer le script shell script_global.sh, en prenant en paramètres le chemin du fichier CSV d’entrée contenant les données des trajets routiers effectués. Il prendra également d’autres paramètres qui seront les choix des traitements à faire (si jamais il y a une mauvaise commande, un manuel d'aide va être affiché)
-3. Recuperer les résultats voulus dans les dossiers concernés en fonction du cahier des charges.
+1. Telecharger l'integralité du github, et le placer à la racine ~.
+2. Mettre le fichier data.csv egalement à la racine.
+3. Executer le script shell script_global.sh, en prenant en paramètres le chemin du fichier CSV d’entrée contenant les données des trajets routiers effectués. Il prendra également d’autres paramètres qui seront les choix des traitements à faire (si jamais il y a une mauvaise commande, un manuel d'aide va être affiché)
+4. Recuperer les résultats voulus dans les dossiers concernés en fonction du cahier des charges.
 
 
 __Liste des fichiers__ : 
