@@ -53,10 +53,9 @@ traitement_s() {
     make all
     
     cd..
-    cd temp
     
     # Exécuter le programme C et sauvegarder les résultats dans un fichier texte
-    ./exec > results.txt
+    ./progc/exec > temp/resultats.txt
     
     cd ..
 }
