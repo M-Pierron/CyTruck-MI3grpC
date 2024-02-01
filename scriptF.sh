@@ -52,8 +52,11 @@ traitement_s() {
     # Compiler le programme C en exécutable en utilisant le makefile
     make all
     
+    cd..
+    cd temp
+    
     # Exécuter le programme C et sauvegarder les résultats dans un fichier texte
-    ./program > ../demo/results.txt
+    ./exec > results.txt
     
     cd ..
 }
