@@ -22,6 +22,6 @@ set ylabel "Option -d2"
 set title " "
 
 set terminal png 
-set output 'graphiqued2.png'
+set output 'graphique-d2.png'
 plot "resultatd2" using 2:xtic(1) axes x1y2 lc rgb "skyblue" notitle
 
