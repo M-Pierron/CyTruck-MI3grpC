@@ -32,8 +32,11 @@ traitement_d2() {
     awk -F';' '{arr[$6]+=$5} END {for (driver in arr) printf "%s;%.2f\n", driver, arr[driver]}' $fichier | sort -t ';' -k2 -nr | head -n 10 > resultatd2.txt
     # Exécute le script Gnuplot
     gnuplot CyTruck-MI3grpC/gnuplot/scriptd2.sh
+    cd CyTruck-MI3grpC/temp/
     convert -rotate 90 graphique-d2.png graphd2.png
-    rm graphique-d2.png   
+    mv graphd2.png ../images/
+    rm graphique-d2.png
+    cd ..  
 }
 
 traitement_l() {
