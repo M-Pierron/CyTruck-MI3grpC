@@ -13,5 +13,5 @@ set ylabel "Distance (KM)"
 set title "Option -l"
 
 set terminal png 
-set output 'graphique-l.png'
+set output 'graphl.png'
 plot "resultatl.txt" using 2:xtic(1) with boxes lc rgb "skyblue"
