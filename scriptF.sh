@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Création des dossiers
-mkdir -p CyTruck-MI3grpC/{data,progc,images,temp,demo}
-
+mkdir -p CyTruck-MI3grpC/{data,progc,images,temp,demo,gnuplot}
+mv scriptd1.sh scriptd2.sh scriptl.sh scriptt.sh scripts.sh CyTruck-MI3grpC/gnuplot/
 # Déplacement du fichier data.csv dans le dossier data
 cp data.csv CyTruck-MI3grpC/data/
 
@@ -17,7 +17,7 @@ traitement_d1() {
     # Affiche les conducteurs avec le plus grand nombre de trajets différents
     echo "Top conducteurs avec le plus grand nombre de trajets différents :"
     echo "$conducteurs_trajets"| awk '{print $1 ";" $2, $3}' | head -n 10 > resultatd1.txt
-    gnuplot scriptd1.sh 
+    gnuplot CyTruck-MI3grpC/gnuplot/scriptd1.sh 
     convert -rotate 90 graphique-d1.png graphd1.png
     rm graphique-d1.png
 }
@@ -28,7 +28,7 @@ traitement_d2() {
     echo "Top 10 des conducteur ayant parcouru la plus grande distance totales"
     awk -F';' '{arr[$6]+=$5} END {for (driver in arr) printf "%s;%.2f\n", driver, arr[driver]}' $fichier | sort -t ';' -k2 -nr | head -n 10 > resultatd2.txt
     # Exécute le script Gnuplot
-    gnuplot scriptd2.sh
+    gnuplot CyTruck-MI3grpC/gnuplot/scriptd2.sh
     convert -rotate 90 graphique-d2.png graphd2.png
     rm graphique-d2.png   
 }
