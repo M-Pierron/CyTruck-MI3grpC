@@ -16,6 +16,21 @@ traitementt.o : traitementt.c headert.h
 exect : etape.o calcult.o ville.o traitementt.o
 	gcc traitementt.o etape.o calcult.o ville.o -o exect
 
+alls: execs
+
+route.o : route.c headers.h
+	gcc -c route.c -o route.o
+
+calculs.o : calculs.c headers.h
+	gcc -c calculs.c -o calculs.o
+
+traitements.o : traitements.c headers.h
+	gcc -c traitements.c -o traitements.o
+
+execs : calculs.o route.o traitements.o
+	gcc traitements.o calculs.o route.o -o execs
+
+
 # -- Supprime tous les fichiers objects
 clean:
 	rm -f *.o
