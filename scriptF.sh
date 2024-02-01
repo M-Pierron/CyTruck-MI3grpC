@@ -78,6 +78,9 @@ case $1 in
     -l)
         traitement_l "$chemin_fichier"
         ;;
+    -s)
+        traitement_s "$chemin_fichier"
+        ;;
     *)
         echo "Option invalide. Utilisez -d1, -d2 ou -l."
         exit 1
