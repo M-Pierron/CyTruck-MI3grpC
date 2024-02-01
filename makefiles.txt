@@ -1,19 +1,18 @@
-# -- Toutes les cibles seront executées en même temps
 all: exec
 
 route.o : route.c headers.h
-	gcc -c route.c -o route.o
+	gcc -c route.c -o temp/route.o
 
 calculs.o : calculs.c headers.h
-	gcc -c calculs.c -o calculs.o
+	gcc -c calculs.c -o temp/calculs.o
 
 traitements.o : traitements.c headers.h
-	gcc -c traitements.c -o traitements.o
+	gcc -c traitements.c -o temp/traitements.o
 
 exec : calculs.o route.o traitements.o
-	gcc traitements.o calculs.o route.o -o exec
+	gcc temp/traitements.o temp/calculs.o temp/route.o -o temp/exec
 
 # -- Supprime tous les fichiers objects
 clean:
-	rm -f *.o
-	rm exec
+	rm -f temp/*.o
+	rm temp/exec
