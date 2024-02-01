@@ -50,12 +50,12 @@ traitement_s() {
     cd progc
     
     # Compiler le programme C en exécutable en utilisant le makefile
-    make all
+    make alls
     
     cd..
     
     # Exécuter le programme C et sauvegarder les résultats dans un fichier texte
-    ./progc/exec > temp/resultats.txt
+    ./progc/execs > temp/resultats.txt
     
     cd ..
 }
