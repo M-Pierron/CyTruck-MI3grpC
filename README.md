@@ -22,8 +22,7 @@ __Liste des fichiers__ :
 - etape.c : Fonctions qui permettent de gerer les AVL du type Etape (traitement t).
 - headers.h : Fonction header, qui rassemble et declare les fonctions du traitement s.
 - headert.h : Fonction header, qui rassemble et declare les fonctions du traitement t.
-- makefiles.txt : Permet de compiler le traitement s.
-- makefilet.txt : Permet de compiler le traitement t.
+- makefile : Permet de compiler les programmes .c.
 - route.c : Fonctions qui permettent de gerer les AVL du type Route (traitement s).
 - script_global.sh : Programme principale, regroupant l'ensemble du programme.
 - scriptd1.sh : Programme gnuplot permettant de faire le graphique du traitement d1.
