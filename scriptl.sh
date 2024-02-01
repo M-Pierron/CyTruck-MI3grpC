@@ -4,7 +4,8 @@ set style data histogram
 set style fill solid
 
 set boxwidth 0.75
-set xrange[0.5:*]
+set xrange[-0.5:*]
+set xtics rotate by -45
 set yrange [0:*]
 set style histogram gap 5
 
