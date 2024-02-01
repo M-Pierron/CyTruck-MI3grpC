@@ -2,8 +2,36 @@
 
 # Création des dossiers
 cd CyTruck-MI3grpC-main
-mkdir -p CyTruck-MI3grpC/{data,progc,images,temp,demo,gnuplot}
-mv scriptd1.sh scriptd2.sh scriptl.sh scriptt.sh scripts.sh CyTruck-MI3grpC/gnuplot/
+mkdir -p CyTruck-MI3grpC
+
+# Vérification et création du dossier images s'il n'existe pas
+if [ ! -d "CyTruck-MI3grpC/data" ]; then
+    mkdir -p CyTruck-MI3grpC/data
+fi
+
+# Vérification et création du dossier temp s'il n'existe pas
+if [ ! -d "CyTruck-MI3grpC/temp" ]; then
+    mkdir -p CyTruck-MI3grpC/temp
+else
+    # Le dossier temp existe, donc nous le vidons
+    rm -rf CyTruck-MI3grpC/temp/*
+fi
+
+# Vérification et création du dossier images s'il n'existe pas
+if [ ! -d "CyTruck-MI3grpC/images" ]; then
+    mkdir -p CyTruck-MI3grpC/images
+fi
+
+# Vérification et création du dossier progc s'il n'existe pas
+if [ ! -d "CyTruck-MI3grpC/progc" ]; then
+    mkdir -p CyTruck-MI3grpC/progc
+fi
+
+# Vérification et création du dossier demo s'il n'existe pas
+if [ ! -d "CyTruck-MI3grpC/demo" ]; then
+    mkdir -p CyTruck-MI3grpC/images
+fi
+
 # Déplacement du fichier data.csv dans le dossier data
 cp data.csv CyTruck-MI3grpC/data/
 
@@ -45,28 +73,27 @@ traitement_d1() {
     conducteurs_trajets=$(awk -F';' 'NR > 1 {if (!seen[$6,$1]) {count[$6]++}; seen[$6,$1]=1} END {for (driver in count) print count[driver], driver}' "$fichier" | sort -nr)
     # Affiche les conducteurs avec le plus grand nombre de trajets différents
     echo "Top conducteurs avec le plus grand nombre de trajets différents :"
-    echo "$conducteurs_trajets"| awk '{print $1 ";" $2, $3}' | head -n 10 > CyTruck-MI3grpC/temp/resultatd1.txt
+    echo "$conducteurs_trajets"| awk '{print $1 ";" $2, $3}' | head -n 10 > resultatd1.txt
     # Exécute le script Gnuplot
-    gnuplot CyTruck-MI3grpC/gnuplot/scriptd1.sh
-    cd CyTruck-MI3grpC/temp/
+    gnuplot scriptd1.sh
     convert -rotate 90 graphique-d1.png graphd1.png
-    mv graphd1.png ../images/
+    mv graphd1.png CyTruck-MI3grpC/images/
     rm graphique-d1.png
-    cd ..
+    mv resultatd1.txt CyTruck-MI3grpC/temp/
+    
 }
 
 traitement_d2() {
     fichier="$1"
     # Trier les trajets par distance décroissante et afficher les 10 premiers avec le nom du conducteur
     echo "Top 10 des conducteur ayant parcouru la plus grande distance totales"
-    awk -F';' '{arr[$6]+=$5} END {for (driver in arr) printf "%s;%.2f\n", driver, arr[driver]}' $fichier | sort -t ';' -k2 -nr | head -n 10 > CyTruck-MI3grpC/temp/resultatd2.txt
+    awk -F';' '{arr[$6]+=$5} END {for (driver in arr) printf "%s;%.2f\n", driver, arr[driver]}' $fichier | sort -t ';' -k2 -nr | head -n 10 > resultatd2.txt
     # Exécute le script Gnuplot
-    gnuplot CyTruck-MI3grpC/gnuplot/scriptd2.sh
-    cd CyTruck-MI3grpC/temp/
+    gnuplot scriptd2.sh
     convert -rotate 90 graphique-d2.png graphd2.png
-    mv graphd2.png ../images/
+    mv graphd2.png CyTruck-MI3grpC/images/
     rm graphique-d2.png
-    cd ..  
+    mv resultatd2.txt CyTruck-MI3grpC/temp/  
 }
 
 traitement_l() {
@@ -74,9 +101,11 @@ traitement_l() {
     #Trier les trajets par distances décroissante et afficher les 10 trajets les plus longs dans l'ordre croissant en fonction de leur ID route (identifaint de trajet)
     echo "Les 10 trajets les plus longs dans l'ordre croissant de leur Identifiant de trajet"
     awk -F ';' 'NR > 1 {arr[$1]+=$5} END {for (i in arr) printf "%s;%.3f\n", i, arr[i]}' "$fichier" \
-    | sort -t ';' -k2 -nr | head -n 10 | sort -t ';' -k1 -n > CyTruck-MI3grpC/temp/resultatl.txt
+    | sort -t ';' -k2 -nr | head -n 10 | sort -t ';' -k1 -n > resultatl.txt
     # Exécute le script Gnuplot
-    gnuplot CyTruck-MI3grpC/gnuplot/scriptl.sh   
+    gnuplot scriptl.sh
+    mv graphl.png CyTruck-MI3grpC/images/
+    mv resultatl.txt CyTruck-MI3grpC/temp/   
 }
 
 traitement_s() {
@@ -99,7 +128,7 @@ traitement_s() {
 
 # Vérification des arguments
 if [ "$#" -lt 2 ]; then
-    echo "Usage: $0 <data/data.csv> [-d1 | -d2 | -l]"
+    echo "Usage: $0 <data.csv> [-d1 | -d2 | -l]"
     exit 1
 fi
 
@@ -126,5 +155,4 @@ case $1 in
         exit 1
         ;;
 esac
-
 
