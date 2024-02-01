@@ -16,7 +16,7 @@ traitement_d1() {
     conducteurs_trajets=$(awk -F';' 'NR > 1 {if (!seen[$6,$1]) {count[$6]++}; seen[$6,$1]=1} END {for (driver in count) print count[driver], driver}' "$fichier" | sort -nr)
     # Affiche les conducteurs avec le plus grand nombre de trajets différents
     echo "Top conducteurs avec le plus grand nombre de trajets différents :"
-    echo "$conducteurs_trajets"| awk '{print $1 ";" $2, $3}' | head -n 10 > resultatd1.txt
+    echo "$conducteurs_trajets"| awk '{print $1 ";" $2, $3}' | head -n 10 > CyTruck-MI3grpC/temp/resultatd1.txt
     gnuplot CyTruck-MI3grpC/gnuplot/scriptd1.sh 
     convert -rotate 90 graphique-d1.png graphd1.png
     rm graphique-d1.png
