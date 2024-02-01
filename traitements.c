@@ -11,7 +11,7 @@ int main() {
   ---------------------------------------------------------------------------------------*/
   // -- Ouverture du fichier CSV --
   FILE *fichier;
-  fichier = fopen("data.csv", "r");
+  fichier = fopen("data/data.csv", "r");
   // -- Verification de l'ouverture du fichier --
   if (fichier == NULL) {
     printf("Erreur lors de l'ouverture du fichier.\n");
