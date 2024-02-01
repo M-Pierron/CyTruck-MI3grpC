@@ -45,7 +45,7 @@ traitement_l() {
 
 traitement_s() {
     # Déplacement des programmes C et des fichiers associés dans le dossier progc
-    mv main_s.c route.c headers.h makefile CyTruck-MI3grpC/progc/
+    mv headers.h traitements.c etape.c calculs.c makefile CyTruck-MI3grpC/progc/
     
     cd progc
     
