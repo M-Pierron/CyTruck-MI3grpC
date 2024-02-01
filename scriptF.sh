@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Création des dossiers
+cd CyTruck-MI3grpC-main
 mkdir -p CyTruck-MI3grpC/{data,progc,images,temp,demo,gnuplot}
 mv scriptd1.sh scriptd2.sh scriptl.sh scriptt.sh scripts.sh CyTruck-MI3grpC/gnuplot/
 # Déplacement du fichier data.csv dans le dossier data
