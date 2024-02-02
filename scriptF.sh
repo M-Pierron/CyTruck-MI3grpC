@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # Création des dossiers
 cd CyTruck-MI3grpC-main
 mkdir -p CyTruck-MI3grpC
@@ -85,7 +84,11 @@ traitement_d1() {
     echo "Top conducteurs avec le plus grand nombre de trajets différents :"
     echo "$conducteurs_trajets"| awk '{print $1 ";" $2, $3}' | head -n 10 > resultatd1.txt
     # Exécute le script Gnuplot
+    start_time=$(date +%s)
     gnuplot scriptd1.sh
+    end_time=$(date +%s)
+    duration=$(( end_time - start_time ))
+    echo "Durée du traitement : $duration secondes."
     convert -rotate 90 graphique-d1.png graphd1.png
     mv graphd1.png CyTruck-MI3grpC/images/
     rm graphique-d1.png
@@ -97,7 +100,11 @@ traitement_d2() {
     fichier="$1"
     # Trier les trajets par distance décroissante et afficher les 10 premiers avec le nom du conducteur
     echo "Top 10 des conducteur ayant parcouru la plus grande distance totales"
+    start_time=$(date +%s)
     awk -F';' '{arr[$6]+=$5} END {for (driver in arr) printf "%s;%.2f\n", driver, arr[driver]}' $fichier | sort -t ';' -k2 -nr | head -n 10 > resultatd2.txt
+    end_time=$(date +%s)
+    duration=$(( end_time - start_time ))
+    echo "Durée du traitement : $duration secondes."
     # Exécute le script Gnuplot
     gnuplot scriptd2.sh
     convert -rotate 90 graphique-d2.png graphd2.png
@@ -110,8 +117,12 @@ traitement_l() {
     fichier="$1"
     #Trier les trajets par distances décroissante et afficher les 10 trajets les plus longs dans l'ordre croissant en fonction de leur ID route (identifaint de trajet)
     echo "Les 10 trajets les plus longs dans l'ordre croissant de leur Identifiant de trajet"
+    start_time=$(date +%s)
     awk -F ';' 'NR > 1 {arr[$1]+=$5} END {for (i in arr) printf "%s;%.3f\n", i, arr[i]}' "$fichier" \
     | sort -t ';' -k2 -nr | head -n 10 | sort -t ';' -k1 -n > resultatl.txt
+    end_time=$(date +%s)
+    duration=$(( end_time - start_time ))
+    echo "Durée du traitement : $duration secondes."
     # Exécute le script Gnuplot
     gnuplot scriptl.sh
     mv graphl.png CyTruck-MI3grpC/images/
@@ -123,10 +134,13 @@ traitement_s() {
     verification_executable_c
     
     cd CyTruck-MI3grpC/progc 
+    start_time=$(date +%s)
     ./execs > ../../resultats.txt
     make clean
     cd ../..
-    	 
+    end_time=$(date +%s)
+    duration=$(( end_time - start_time ))
+    echo "Durée du traitement : $duration secondes."
     # Exécute le script Gnuplot
     gnuplot scripts.sh
     mv graphs.png CyTruck-MI3grpC/images/
@@ -138,10 +152,13 @@ traitement_t() {
     verification_executable_t
     
     cd CyTruck-MI3grpC/progc 
+    start_time=$(date +%s)
     ./exect > ../../resultatt.txt
     make clean
     cd ../..
-    	 
+    end_time=$(date +%s)
+    duration=$(( end_time - start_time ))
+    echo "Durée du traitement : $duration secondes."
     # Exécute le script Gnuplot
     gnuplot scriptt.sh
     mv grapht.png CyTruck-MI3grpC/images/
@@ -202,3 +219,5 @@ case $1 in
         ;;
 esac
 
+# Stockage du temps d'exécution dans le dossier demo
+echo "$duration secondes" > CyTruck-MI3grpC/demo/duration.txt
