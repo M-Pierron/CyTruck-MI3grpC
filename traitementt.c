@@ -20,7 +20,7 @@ int main() {
     exit(1);
   }
 
-  // - Declaration de variable
+  // -- Declaration de variable --
   char ligne[TAILLE_LIGNE];
   char **colonnes1a4 = NULL;
   int nb_lignes = 0, colonne_voulue = 0, nb_etapes = 0, h1 = 0, h2 = 0, h3 = 0, h4 = 0, h5 = 0, compteur = 0;
