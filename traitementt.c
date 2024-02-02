@@ -13,7 +13,7 @@ int main() {
 
   // -- Ouverture du fichier CSV --
   FILE *fichier;
-  fichier = fopen("data.csv", "r, ccs=UTF-8");
+  fichier = fopen("../data/data.csv", "r, ccs=UTF-8");
   // -- Verification de l'ouverture du fichier --
   if (fichier == NULL) {
     printf("Erreur lors de l'ouverture du fichier.\n");
