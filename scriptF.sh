@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 # Création des dossiers
 cd CyTruck-MI3grpC-main
 mkdir -p CyTruck-MI3grpC
@@ -148,11 +149,31 @@ traitement_t() {
     
 }
 
+# Affichage de l'aide
+afficher_aide() {
+    echo "Usage: $0 <data.csv> [-d1 | -d2 | -l | -s | -t]"
+    echo "Options:"
+    echo "  -d1 : Effectue le traitement D1."
+    echo "  -d2 : Effectue le traitement D2."
+    echo "  -l  : Effectue le traitement L."
+    echo "  -s  : Effectue le traitement S."
+    echo "  -t  : Effectue le traitement T."
+    echo "  -h  : Affiche cette aide."
+}
+
+
 # Vérification des arguments
 if [ "$#" -lt 2 ]; then
-    echo "Usage: $0 <data.csv> [-d1 | -d2 | -l | -s | -t]"
+    afficher_aide
     exit 1
 fi
+
+# Vérification de l'option -h
+if [ "$1" == "-h" ]; then
+    afficher_aide
+    exit 0
+fi
+
 
 # Récupération du chemin du fichier
 chemin_fichier="$1"
