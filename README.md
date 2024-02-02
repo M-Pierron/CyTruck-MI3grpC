@@ -10,8 +10,9 @@ Programme qui analyse le contenu du fichier de données et génére des graphiqu
 __Comment l'utiliser__ : 
 
 1. Telecharger l'integralité du github
-2. Placer le fichier data.csv dans le dossier telechargé par Github.
-3. Executer le script shell scriptF.sh, en prenant en paramètres le chemin du fichier CSV d’entrée contenant les données des trajets routiers effectués. Il prendra également d’autres paramètres qui seront les choix des traitements à faire (si jamais il y a une mauvaise commande, un manuel d'aide va être affiché)
+2. Placer le fichier data.csv dans le dossier telechargé par Github nommé CyTruck-MI3grC-main .
+3. Executer le script shell scriptF.sh, en prenant en paramètres le chemin du fichier CSV d’entrée contenant les données des trajets routiers effectués. Il prendra également d’autres. paramètres qui seront les choix des traitements à faire (si jamais il y a une mauvaise commande, un manuel d'aide va être affiché)
+exemple d'exécution : ./CyTruck-MI3grC-main/scriptF.sh data.csv - aux choix entre d1,d2,l,s,t suivant les traitemnts désirés
 4. Recuperer les résultats voulus dans les dossiers concernés en fonction du cahier des charges.
 
 
