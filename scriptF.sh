@@ -17,9 +17,17 @@ else
     rm -rf CyTruck-MI3grpC/temp/*
 fi
 
+# -- Vérification et création du dossier demo s'il n'existe pas --
+if [ ! -d "CyTruck-MI3grpC/demo" ]; then
+    mkdir -p CyTruck-MI3grpC/demo
+fi
+
 # -- Vérification et création du dossier images s'il n'existe pas --
 if [ ! -d "CyTruck-MI3grpC/images" ]; then
     mkdir -p CyTruck-MI3grpC/images
+else 
+    # -- Le dossier images existe, donc nous deplacon les resultats d'executions precedentes dans le dossier demo --
+    mv CyTruck-MI3grpC/images/* CyTruck-MI3grpC/demo
 fi
 
 # -- Vérification et création du dossier progc s'il n'existe pas --
@@ -28,11 +36,6 @@ if [ ! -d "CyTruck-MI3grpC/progc" ]; then
     # -- Déplacement des programmes C et des fichiers associés dans le dossier progc --
     mv headers.h traitements.c route.c calculs.c makefile CyTruck-MI3grpC/progc/
     mv headert.h traitementt.c ville.c calcult.c etape.c makefile CyTruck-MI3grpC/progc/
-fi
-
-# -- Vérification et création du dossier demo s'il n'existe pas --
-if [ ! -d "CyTruck-MI3grpC/demo" ]; then
-    mkdir -p CyTruck-MI3grpC/demo
 fi
 
 # -- Déplacement du fichier data.csv dans le dossier data --
