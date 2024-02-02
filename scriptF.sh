@@ -26,7 +26,7 @@ fi
 if [ ! -d "CyTruck-MI3grpC/progc" ]; then
     mkdir -p CyTruck-MI3grpC/progc
     # Déplacement des programmes C et des fichiers associés dans le dossier progc
-    mv headers.h traitements.c route.c calculs.c CyTruck-MI3grpC/progc/
+    mv headers.h traitements.c route.c calculs.c makefile CyTruck-MI3grpC/progc/
     mv headert.h traitementt.c ville.c calcult.c etape.c CyTruck-MI3grpC/progc/
 fi
 
@@ -43,7 +43,6 @@ export LC_NUMERIC="en_US.UTF-8"
 
 # Fonction pour vérifier la présence de l'exécutable C
 verification_executable_s() {
-    mv makefile CyTruck-MI3grpC/progc/
     if [ ! -f "CyTruck-MI3grpC/progc/execs" ]; then
         # Compiler le programme C en exécutable en utilisant le makefile
         cd CyTruck-MI3grpC/progc || exit
@@ -61,7 +60,6 @@ verification_executable_s() {
 
 # Fonction pour vérifier la présence de l'exécutable C
 verification_executable_t() {
-    mv makefile CyTruck-MI3grpC/progc/
     if [ ! -f "CyTruck-MI3grpC/progc/execs" ]; then
         # Compiler le programme C en exécutable en utilisant le makefile
         cd CyTruck-MI3grpC/progc || exit
