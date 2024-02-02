@@ -25,11 +25,14 @@ fi
 # Vérification et création du dossier progc s'il n'existe pas
 if [ ! -d "CyTruck-MI3grpC/progc" ]; then
     mkdir -p CyTruck-MI3grpC/progc
+    # Déplacement des programmes C et des fichiers associés dans le dossier progc
+    mv headers.h traitements.c route.c calculs.c makefile CyTruck-MI3grpC/progc/
+    mv headert.h traitementt.c ville.c calcult.c etape.c makefile CyTruck-MI3grpC/progc/
 fi
 
 # Vérification et création du dossier demo s'il n'existe pas
 if [ ! -d "CyTruck-MI3grpC/demo" ]; then
-    mkdir -p CyTruck-MI3grpC/images
+    mkdir -p CyTruck-MI3grpC/demo
 fi
 
 # Déplacement du fichier data.csv dans le dossier data
@@ -39,12 +42,12 @@ cp data.csv CyTruck-MI3grpC/data/
 export LC_NUMERIC="en_US.UTF-8"
 
 # Fonction pour vérifier la présence de l'exécutable C
-verification_executable_c() {
+verification_executable_s() {
     if [ ! -f "CyTruck-MI3grpC/progc/execs" ]; then
         # Compiler le programme C en exécutable en utilisant le makefile
         cd CyTruck-MI3grpC/progc || exit
         make alls
-        
+        cd ..
         # Vérifier que la compilation s'est bien déroulée
         if [ $? -ne 0 ]; then
             echo "Erreur lors de la compilation du programme C."
@@ -55,15 +58,21 @@ verification_executable_c() {
     fi
 }
 
-# Vérification de la présence des dossiers temp et images
-verification_dossiers() {
-    if [ ! -d "CyTruck-MI3grpC/temp" ]; then
-        mkdir CyTruck-MI3grpC/temp
-    else
-        rm -rf CyTruck-MI3grpC/temp/*
+# Fonction pour vérifier la présence de l'exécutable C
+verification_executable_t() {
+    if [ ! -f "CyTruck-MI3grpC/progc/execs" ]; then
+        # Compiler le programme C en exécutable en utilisant le makefile
+        cd CyTruck-MI3grpC/progc || exit
+        make allt
+        cd ..
+        # Vérifier que la compilation s'est bien déroulée
+        if [ $? -ne 0 ]; then
+            echo "Erreur lors de la compilation du programme C."
+            exit 1
+        fi
+        
+        cd ..
     fi
-
-    mkdir -p CyTruck-MI3grpC/images
 }
 
 # Définition des fonctions pour chaque traitement
@@ -109,26 +118,39 @@ traitement_l() {
 }
 
 traitement_s() {
-    # Déplacement des programmes C et des fichiers associés dans le dossier progc
-    mv headers.h traitements.c route.c calculs.c makefiles.txt CyTruck-MI3grpC/progc/
-    
+
     verification_executable_c
-    verification_dossiers
     
-    cd CyTruck-MI3grpC || exit
-    
-    # Exécuter le programme C et sauvegarder les résultats dans un fichier texte
-    ./progc/execs > temp/resultats.txt
-    
-    cd..
-    
+    cd CyTruck-MI3grpC/progc 
+    ./execs > ../../resultats.txt
+    make clean
+    cd ../..
+    	 
     # Exécute le script Gnuplot
-    gnuplot CyTruck-MI3grpC/gnuplot/scripts.sh
+    gnuplot scripts.sh
+    mv graphs.png CyTruck-MI3grpC/images/
+    mv resultats.txt CyTruck-MI3grpC/temp/
+}
+
+traitement_t() {
+    
+    verification_executable_t
+    
+    cd CyTruck-MI3grpC/progc 
+    ./exect > ../../resultatt.txt
+    make clean
+    cd ../..
+    	 
+    # Exécute le script Gnuplot
+    gnuplot scriptt.sh
+    mv grapht.png CyTruck-MI3grpC/images/
+    mv resultatt.txt CyTruck-MI3grpC/temp/
+    
 }
 
 # Vérification des arguments
 if [ "$#" -lt 2 ]; then
-    echo "Usage: $0 <data.csv> [-d1 | -d2 | -l]"
+    echo "Usage: $0 <data.csv> [-d1 | -d2 | -l | -s | -t]"
     exit 1
 fi
 
@@ -149,6 +171,9 @@ case $1 in
         ;;
     -s)
         traitement_s "$chemin_fichier"
+        ;;
+    -t)
+        traitement_t "$chemin_fichier"
         ;;
     *)
         echo "Option invalide. Utilisez -d1, -d2 ou -l."
