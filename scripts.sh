@@ -11,5 +11,4 @@ set title "Option -s"
 
 set terminal png 
 set output 'graphs.png'
-plot "CyTruck-MI3grpC/temp/resultats.txt" using ($1-1):5:($5-$6):xtic(2) with filledcurve lc rgb "#32D365", '' using 4 smooth mcspline lw 2
-mv graphs.png CyTruck-MI3grpC/images/
+plot "resultats.txt" using 0:2:3 with filledcurve fc rgb "#32D365" title "Distance Max/Min", "resultats.txt" using 0:4:xticlabels(1) with lines linestyle 2 title "Distance moyenne (Km)"
