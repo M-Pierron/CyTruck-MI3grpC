@@ -255,7 +255,7 @@ void afficherRoute(Route *AVLroute, int *compteur) {
     if (*compteur < 50) {
       afficherRoute(AVLroute->droit, compteur);
       if (*compteur < 50) {
-        printf("%s; %f; %f; %f\n", AVLroute->id, AVLroute->maxi, AVLroute->mini, AVLroute->moyenne);
+        printf("%s;%f;%f;%f\n", AVLroute->id, AVLroute->maxi, AVLroute->mini, AVLroute->moyenne);
         (*compteur)++;
         if (*compteur < 50) {
           afficherRoute(AVLroute->gauche, compteur);
