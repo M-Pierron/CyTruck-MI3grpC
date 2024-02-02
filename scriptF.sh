@@ -196,28 +196,36 @@ fi
 chemin_fichier="$1"
 shift
 
-# Vérification de l'option spécifiée
-case $1 in
-    -d1)
-        traitement_d1 "$chemin_fichier"
-        ;;
-    -d2)
-        traitement_d2 "$chemin_fichier"
-        ;;
-    -l)
-        traitement_l "$chemin_fichier"
-        ;;
-    -s)
-        traitement_s "$chemin_fichier"
-        ;;
-    -t)
-        traitement_t "$chemin_fichier"
-        ;;
-    *)
-        echo "Option invalide. Utilisez -d1, -d2 ou -l."
-        exit 1
-        ;;
-esac
+# Initialisation de la durée totale
+total_duration=0
+
+# Boucle pour traiter chaque option spécifiée
+for option in "$@"; do
+    case $option in
+        -d1)
+            traitement_d1 "$chemin_fichier"
+            ;;
+        -d2)
+            traitement_d2 "$chemin_fichier"
+            ;;
+        -l)
+            traitement_l "$chemin_fichier"
+            ;;
+        -s)
+            traitement_s "$chemin_fichier"
+            ;;
+        -t)
+            traitement_t "$chemin_fichier"
+            ;;
+        *)
+            echo "Option invalide : $option. Utilisez -d1, -d2, -l, -s ou -t."
+            exit 1
+            ;;
+    esac
+    # Addition de la durée de traitement à la durée totale
+    total_duration=$((total_duration + duration))
+done
+
 
 # Stockage du temps d'exécution dans le dossier demo
 echo "$duration secondes" > CyTruck-MI3grpC/demo/duration.txt
