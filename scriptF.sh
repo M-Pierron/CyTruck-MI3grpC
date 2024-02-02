@@ -27,7 +27,7 @@ if [ ! -d "CyTruck-MI3grpC/progc" ]; then
     mkdir -p CyTruck-MI3grpC/progc
     # Déplacement des programmes C et des fichiers associés dans le dossier progc
     mv headers.h traitements.c route.c calculs.c CyTruck-MI3grpC/progc/
-    mv headert.h traitementt.c ville.c calcult.c etape.c makefile CyTruck-MI3grpC/progc/
+    mv headert.h traitementt.c ville.c calcult.c etape.c CyTruck-MI3grpC/progc/
 fi
 
 # Vérification et création du dossier demo s'il n'existe pas
