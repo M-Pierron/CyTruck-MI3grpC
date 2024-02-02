@@ -131,7 +131,7 @@ traitement_l() {
 
 traitement_s() {
 
-    verification_executable_c
+    verification_executable_s
     
     cd CyTruck-MI3grpC/progc 
     start_time=$(date +%s)
