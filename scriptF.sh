@@ -186,10 +186,12 @@ if [ "$#" -lt 2 ]; then
 fi
 
 # -- Vérification de l'option -h --
-if [ "$1" == "-h" ]; then
-    afficher_aide
-    exit 0
-fi
+for argument in "$@"; do 
+    if [ "$argument" == "-h" ]; then
+        afficher_aide
+        exit 1
+    fi 
+done
 
 
 # -- Récupération du chemin du fichier --
@@ -197,7 +199,8 @@ chemin_fichier="$1"
 shift
 
 # -- Vérification de l'option spécifiée --
-case $1 in
+for argument in "$@"; do 
+    case argument in
     -d1)
         traitement_d1 "$chemin_fichier"
         ;;
@@ -217,7 +220,10 @@ case $1 in
         echo "Option invalide. Utilisez -d1, -d2 ou -l."
         exit 1
         ;;
-esac
+    esac
+     
+done
+
 
 # -- Stockage du temps d'exécution dans le dossier demo --
 echo "$duration secondes" > CyTruck-MI3grpC/demo/duration.txt
