@@ -315,7 +315,7 @@ void affichageAVL(Ville *AVLville) {
 
   if (AVLville != NULL) {
     affichageAVL(AVLville->gauche);
-    printf("%s; %d; %d\n", AVLville->ville, AVLville->nbparcourus, AVLville->nbvilledepart);
+    printf("%s;%d;%d\n", AVLville->ville, AVLville->nbparcourus, AVLville->nbvilledepart);
     affichageAVL(AVLville->droit);
   }
 }
